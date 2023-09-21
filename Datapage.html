@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Data page</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+#overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: none;
+}
+
+#overlay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+}
+
+main {
+  padding: 20px;
+  max-width: 1268px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+}
+
+#table-section {
+  width: 60%;
+}
+
+a {
+  text-decoration: none;
+}
+
+form {
+  border: 1px solid black;
+  width: 230px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+button,
+input,
+textarea {
+  font-family: "Lato", sans-serif;
+  outline: unset;
+}
+
+#info-wrapper {
+  width: 40%;
+  padding: 0 0 20px 0;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+}
+
+h1 {
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+#info-wrapper p {
+  font-style: italic;
+  color: gray;
+}
+
+#info-content {
+  display: none;
+  margin-top: 10px;
+}
+
+#info-wrapper > div {
+  margin-bottom: 5px;
+}
+
+textarea {
+  white-space: normal;
+  width: 100%;
+  z-index: 2;
+  margin: 0;
+  border: 2px solid black;
+  border-radius: 0;
+  color: #444;
+  background-color: transparent;
+  overflow: auto;
+  resize: none;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+input {
+  font-size: 16px;
+  border: unset;
+  width: 100%;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: transparent;
+}
+
+img {
+  width: 16px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+#table-wrapper {
+  box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+}
+
+#table-headers {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+
+#table-data {
+  max-height: 500px;
+  overflow-y: overlay;
+}
+
+@-moz-document url-prefix() {
+  #table-data {
+    overflow-y: scroll;
+  }
+}
+
+#table-data tr {
+  cursor: pointer;
+}
+
+#table-data tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+th {
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.4;
+  background-color: black;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+td {
+  font-size: 16px;
+  color: #808080;
+  line-height: 1.4;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.column1 {
+  width: 50px;
+}
+
+.column2 {
+  width: 170px;
+}
+
+.column3 {
+  width: 170px;
+}
+
+.column4 {
+  width: 170px;
+}
+
+.column5 {
+  width: 300px;
+}
+
+.active {
+  background-color: lightseagreen !important;
+}
+
+.active td {
+  color: black;
+}
+
+    </style>
+
+
+<body>
+<script src='http://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D';
+
+<script>
+$(document).ready(function(){
+  $("p").dblclick(function(){
+    alert("The paragraph was double-clicked.");
+  });
+});
+</script>
+    <div id="overlay">
+        <img src="./img/preloader.gif" alt="Preloader icon" />
+    </div>
+
+    <main>
+
+        <div id="table-section">
+
+            <form action="/">
+                <img src='./img/search-icon.svg' alt="Search Icon" />
+                <input type="text" placeholder="Enter something" name="search-box" id="search-box" value="" />
+            </form>
+
+            <div id="table-wrapper">
+
+                <div id="table-headers">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="column1">Id</th>
+                                <th class="column2">FirstName</th>
+                                <th class="column3">LastName</th>
+                                <th class="column4">Email</th>
+                                <th class="column5">Phone</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div id="table-data">
+                    <table>
+                        <tbody>
+                            <tr class="data-row">
+                                <td class="column1">28</td>
+                                <td class="column2">Larisa</td>
+                                <td class="column3">Llaneza</td>
+                                <td class="column4">SCallison@non.org</td>
+                                <td class="column5">(763)248-9034</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">835</td>
+                                <td class="column2">Marcellin</td>
+                                <td class="column3">Shrestha</td>
+                                <td class="column4">ARose@sagittis.ly</td>
+                                <td class="column5">(801)653-7547</td>
+                            </tr>
+                            <tr class="data-row active">
+                                <td class="column1">654</td>
+                                <td class="column2">Xiumei</td>
+                                <td class="column3">Jongco</td>
+                                <td class="column4">AKoprowski@vitae.ly</td>
+                                <td class="column5">(773)391-2969</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">70</td>
+                                <td class="column2">Tanya</td>
+                                <td class="column3">Gonshor</td>
+                                <td class="column4">PPervaiz@nullam.io</td>
+                                <td class="column5">(376)035-7184</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">943</td>
+                                <td class="column2">Sritharan</td>
+                                <td class="column3">Worden</td>
+                                <td class="column4">DLencowski@tortor.ly</td>
+                                <td class="column5">(714)779-2847</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">796</td>
+                                <td class="column2">Josephine</td>
+                                <td class="column3">Geouque</td>
+                                <td class="column4">KChristopher@amet.io</td>
+                                <td class="column5">(421)120-7963</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">339</td>
+                                <td class="column2">Yu</td>
+                                <td class="column3">Ferreira</td>
+                                <td class="column4">KHeppelmann@amet.com</td>
+                                <td class="column5">(101)002-6875</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">25</td>
+                                <td class="column2">Kathy</td>
+                                <td class="column3">Hansen</td>
+                                <td class="column4">MJacobs@lacus.io</td>
+                                <td class="column5">(984)584-1749</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">833</td>
+                                <td class="column2">Deitric</td>
+                                <td class="column3">Whitman</td>
+                                <td class="column4">JRamsey@tortor.io</td>
+                                <td class="column5">(301)556-8434</td>
+                            </tr>
+                            <tr class="data-row">
+                                <td class="column1">856</td>
+                                <td class="column2">Yeqing</td>
+                                <td class="column3">Elshoff</td>
+                                <td class="column4">RKimmel@tincidunt.com</td>
+                                <td class="column5">(230)488-3157</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Details box -->
+
+        <div id="info-wrapper">
+            <h1>Details</h1>
+            <p>Click on a table item to get detailed information</p>
+            <div id="info-content">
+                <div><b>User selected:</b> Marcellin Shrestha</div>
+                <div>
+                    <b>Description: </b>
+                    <textarea cols="50" rows="5" readonly>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, quia nihil. Est, illum minima libero rerum, nihil distinctio placeat sint nam quae repellendus obcaecati delectus totam non odio. Sint, reprehenderit?
+                    </textarea>
+                </div>
+                <div><b>Address:</b> 6480 Nec Ct</div>
+                <div><b>City:</b> Dinwiddie</div>
+                <div><b>State:</b> NV</div>
+                <div><b>Zip:</b> 91295</div>
+            </div>
+        </div>
+
+    </main>
+
+    <script >
+      fetch('http://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D';)
+      .then(res=>){
+            console.log(res);
+            })
+            .catch(error=>console.log(error));
+  </script>
+</body>
+
+</html>
